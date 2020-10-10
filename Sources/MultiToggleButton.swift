@@ -82,7 +82,7 @@ open class MultiToggleButton: UIButton {
 
     private func setupCurrentState() {
         let currentTitle = states[currentStateIndex]
-        setTitle(currentTitle.isEmpty ? nil : " " + currentTitle, for: .normal)
+        setTitle(currentTitle.isEmpty ? nil : "" + currentTitle, for: .normal)
         setTitleColor(currentColor ?? tintColor, for: .normal)
         backgroundColor = currentBackgroundColor ?? .clear
         setImage(currentToggleImage ?? currentImage, for: .normal)
