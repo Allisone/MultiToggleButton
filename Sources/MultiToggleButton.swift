@@ -89,7 +89,7 @@ open class MultiToggleButton: UIButton {
         setTitle(currentTitle.isEmpty ? nil : "" + currentTitle, for: .normal)
         setTitleColor(currentColor ?? tintColor, for: .normal)
         backgroundColor = currentBackgroundColor ?? .clear
-        self.layer.borderColor = currentBorderColor.cgColor ?? UIColor.clear.cgColor
+        self.layer.borderColor = currentBorderColor?.cgColor ?? UIColor.clear.cgColor
         setImage(currentToggleImage ?? currentImage, for: .normal)
     }
 
