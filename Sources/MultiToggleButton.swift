@@ -17,6 +17,7 @@ open class MultiToggleButton: UIButton {
         states: [String],
         colors: [UIColor?] = [],
         backgroundColors: [UIColor?] = [],
+        borderColors: [UIColor?] = [],
         action: ((_ sender: MultiToggleButton) -> Void)? = nil
     ) {
         self.init(frame: CGRect.zero)
@@ -30,6 +31,7 @@ open class MultiToggleButton: UIButton {
         self.states = states
         self.colors = colors
         self.backgroundColors = backgroundColors
+        self.borderColors = borderColors
         self.action = action
         addTarget(self, action: #selector(toggle), for: .touchUpInside)
 
@@ -41,9 +43,10 @@ open class MultiToggleButton: UIButton {
         states: [String],
         colors: [UIColor?] = [],
         backgroundColors: [UIColor?] = [],
+        borderColors: [UIColor?] = [],
         action: ((_ sender: MultiToggleButton) -> Void)? = nil
     ) {
-        self.init(images: [image], states: states, colors: colors, backgroundColors: backgroundColors, action: action)
+        self.init(images: [image], states: states, colors: colors, backgroundColors: backgroundColors, borderColors: borderColors, action: action)
     }
 
     // MARK: - Manual Control
@@ -56,6 +59,7 @@ open class MultiToggleButton: UIButton {
     @objc open var currentStateIndex: Int = 0 { didSet { setupCurrentState() } }
     open var colors: [UIColor?] = [] { didSet { setupCurrentState() } }
     open var backgroundColors: [UIColor?] = [] { didSet { setupCurrentState() } }
+    open var borderColors: [UIColor?] = [] { didSet { setupCurrentState() } }
     open var images: [UIImage?] = [] { didSet { setupCurrentState() } }
     @objc open var states: [String] = [] {
         didSet {
@@ -85,6 +89,7 @@ open class MultiToggleButton: UIButton {
         setTitle(currentTitle.isEmpty ? nil : "" + currentTitle, for: .normal)
         setTitleColor(currentColor ?? tintColor, for: .normal)
         backgroundColor = currentBackgroundColor ?? .clear
+        self.layer.borderColor = currentBorderColor.cgColor ?? UIColor.clear.cgColor
         setImage(currentToggleImage ?? currentImage, for: .normal)
     }
 
@@ -94,6 +99,10 @@ open class MultiToggleButton: UIButton {
 
     private var currentBackgroundColor: UIColor? {
         return currentStateIndex < backgroundColors.count ? backgroundColors[currentStateIndex] : nil
+    }
+
+    private var currentBorderColor: UIColor? {
+        return currentStateIndex < borderColors.count ? borderColors[currentStateIndex] : nil
     }
 
     private var currentToggleImage: UIImage? {
