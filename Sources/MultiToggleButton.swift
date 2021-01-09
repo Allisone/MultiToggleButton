@@ -9,12 +9,13 @@
 import UIKit
 
 public typealias ToggleButton = MultiToggleButton // compatibility with old version
-open enum MultiToggleButtonType {
+public enum MultiToggleButtonType {
     case singleChoice
     case spanChoice
 }
 
 open class MultiToggleButton: UIButton {
+    
     /// use only this init, it's 'convenience' only to avoid overriding required inits
     public convenience init(
         images: [UIImage?],
