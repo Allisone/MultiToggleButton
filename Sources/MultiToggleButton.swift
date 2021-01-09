@@ -61,7 +61,7 @@ open class MultiToggleButton: UIButton {
     }
 
     @objc open var currentStateIndex: Int = 0 { didSet { setupCurrentState() } }
-    open var buttonType: MultiToggleButtonType = .singleChoice
+    open var multiToggleButtonType: MultiToggleButtonType = .singleChoice
     open var colors: [UIColor?] = [] { didSet { setupCurrentState() } }
     open var backgroundColors: [UIColor?] = [] { didSet { setupCurrentState() } }
     open var borderColors: [UIColor?] = [] { didSet { setupCurrentState() } }
