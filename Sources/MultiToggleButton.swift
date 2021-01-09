@@ -9,6 +9,10 @@
 import UIKit
 
 public typealias ToggleButton = MultiToggleButton // compatibility with old version
+enum MultiToggleButtonType {
+    case singleChoice
+    case spanChoice
+}
 
 open class MultiToggleButton: UIButton {
     /// use only this init, it's 'convenience' only to avoid overriding required inits
@@ -57,6 +61,7 @@ open class MultiToggleButton: UIButton {
     }
 
     @objc open var currentStateIndex: Int = 0 { didSet { setupCurrentState() } }
+    open var buttonType: MultiToggleButtonType = .singleChoice
     open var colors: [UIColor?] = [] { didSet { setupCurrentState() } }
     open var backgroundColors: [UIColor?] = [] { didSet { setupCurrentState() } }
     open var borderColors: [UIColor?] = [] { didSet { setupCurrentState() } }
