@@ -9,7 +9,7 @@
 import UIKit
 
 public typealias ToggleButton = MultiToggleButton // compatibility with old version
-enum MultiToggleButtonType {
+open enum MultiToggleButtonType {
     case singleChoice
     case spanChoice
 }
